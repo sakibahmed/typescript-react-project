@@ -1,0 +1,115 @@
+.data-grid-container{            
+    /* border: 1px solid rgb(186, 191, 199); */
+    border: 1px solid #444;
+    box-sizing: border-box;      
+    font-size: 14px;  
+    color: rgb(24, 29, 31);
+    background-color: #f8f8f8;
+    position: relative;
+    font-weight: 500;
+}
+
+.data-grid-header{
+    display: flex;    
+    color: #fff;
+    background-color: #444;
+}
+
+.data-grid-cell{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 10px 20px;
+    /* margin: -1px 0 0 -1px; */
+    box-sizing: border-box;    
+    /*border-right:1px  solid #ddd;*/
+}
+.data-grid-cell:last-child{
+  border: 0;
+}
+
+.data-grid-header-cell{
+    display: flex;
+    position: relative;
+    justify-content: start;
+    /* padding: 20px; */
+    border-right: 1px solid #ddd;
+} 
+
+.data-grid-header-cell:last-child{
+  border: 0;
+}
+
+.data-grid-header-cell-label{
+    font-weight: 600;
+    flex: 1;
+}
+
+.data-grid-header-cell:hover .data-grid-header-cell-sortable{
+    display: block;
+}
+
+.data-grid-header-cell-sortable::after{
+    content: '';    
+}
+
+.data-grid-header-cell-sortable.arrow-up{
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 7px solid #fff;
+    height: 1px;
+    width: 1px;
+}
+
+.data-grid-header-cell-sortable.arrow-down{
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #fff;
+    height: 1px;
+    width: 1px;
+}
+
+.data-grid-body{
+  overflow-y: auto;
+}
+
+.data-grid-row{
+    display: flex;
+    border-bottom: 1px solid #444;
+}
+
+.data-grid-cell.price {
+  justify-content: end;
+}
+
+.data-grid-header-cell.price .data-grid-header-cell-label{
+  text-align: right;
+  padding-right: 10px;
+}
+
+.data-grid-footer{
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.data-grid-body::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+.data-grid-body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.data-grid-body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
