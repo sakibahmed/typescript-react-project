@@ -1,3 +1,16 @@
+Initial render
+![image](https://user-images.githubusercontent.com/5592326/148816818-9fcb2eb9-14a2-46f6-9c6a-68c09f0d2477.png)
+
+After Sorting by Asset classs
+![image](https://user-images.githubusercontent.com/5592326/148817364-101d446b-230e-41d7-8a99-ca686b39d85d.png)
+
+After sorting by Price
+![image](https://user-images.githubusercontent.com/5592326/148817459-543758c3-cfec-4c7a-b863-639384f3de0d.png)
+
+After sorting by Ticker
+![image](https://user-images.githubusercontent.com/5592326/148817520-15b11fde-0947-45bb-af98-e4f0159579f4.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -44,3 +57,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
