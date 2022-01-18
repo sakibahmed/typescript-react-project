@@ -64,7 +64,7 @@ const columnDefinitions = [
     columnName: 'Price',
     field: 'price',
     sortable: true,
-    className: 'price',
+    customClassName: 'price',
     cellFormatter: (value: any) => {        
      return '$'+ Math.abs(value);
     },

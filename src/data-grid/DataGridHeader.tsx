@@ -1,13 +1,15 @@
+import { useCallback, useEffect } from "react";
+
 const sortColumnMap: any = {},
-    classNames: any = {};
+      classNames: any = {};
 
 const populateClassNames = (columnDefinitions: any) => {
     for(let col of columnDefinitions){         
-        classNames[col.field] = col.className;            
+        classNames[col.field] = col.customClassName;            
     }
 }
 
-const getClassName = (field: any) => {        
+const getCustomClassName = (field: any) => {        
     return classNames[field] ? classNames[field]: '';
 }     
 
@@ -15,7 +17,7 @@ const DataGridHeader = (props : any) => {
     const { gridRowData, gridOptions, sortHandler } = props,
         { columnDefinitions, headerHeight, enableSorting } = gridOptions;
 
-    populateClassNames(columnDefinitions);       
+    populateClassNames(columnDefinitions);    
     
     const sortFn = (event: any, col: any) => {
         const {field, customSort} = col;
@@ -55,37 +57,35 @@ const DataGridHeader = (props : any) => {
         sortHandler([...sortedRows]);
     };
 
-    const getSortOrder = (field: any) => {
-        let cellClass = "data-grid-header-cell-sortable ",
+    const getSortClassName = (field: any) => {
+        let cellClass = '',
             sortOrder = sortColumnMap[field];
                 
         if(sortOrder === 'asc'){
-            cellClass += 'arrow-up';
+            cellClass = 'arrow-up';
         } 
         if(sortOrder === 'dsc'){
-            cellClass += 'arrow-down';
+            cellClass = 'arrow-down';
         }
         
         return cellClass;
-    };
+    }
 
     return (
         <div className="data-grid-header">
             {
-                columnDefinitions.map((col: any, index: number) => {
-                    let className="data-grid-header-cell data-grid-cell " + getClassName(col.field),
-                        sortClassName = getSortOrder(col.field);
-                        
+                columnDefinitions.map((col: any, index: number) => {                        
                     return (
-                        <div className={className}  key={index}
-                         style={{height: headerHeight}} 
-                         onClick={ (event: any) =>  sortFn(event,col)}>
+                        <div className={`data-grid-header-cell data-grid-cell ${getCustomClassName(col.field)}`}  key={index}
+                            style={{height: headerHeight}} 
+                            onClick={ (event: any) =>  sortFn(event,col)}>
+
                            <div className="data-grid-header-cell-label">
                                 {col.columnName}
                            </div> 
 
                           { enableSorting && col.sortable && 
-                              <div className={sortClassName}>
+                              <div className={`data-grid-header-cell-sortable ${getSortClassName(col.field)}`}>
                               </div>
                           }                            
                         </div>

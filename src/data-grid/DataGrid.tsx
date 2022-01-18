@@ -9,7 +9,6 @@ const DataGrid = (props: any) => {
         { gridHeight,footerHeight } = props.gridOptions; 
 
     const sortHandler = useCallback( (data: any) => {
-        console.log('sortHandler');
         setRows(data)
     }, []);
  

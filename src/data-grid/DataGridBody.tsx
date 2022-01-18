@@ -16,6 +16,8 @@ const DataGridBody = (props: any) => {
             { setRowStyle, columnDefinitions, rowHeight,
             headerHeight, gridHeight, footerHeight } = gridOptions;
 
+            console.log('Body');
+
     populateFields(columnDefinitions);
 
     const getCellStyle = (field: any, value: any) => {        
