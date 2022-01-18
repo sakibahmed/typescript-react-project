@@ -7,7 +7,7 @@ const populateFields = (columnDefinitions: any) => {
     for(let col of columnDefinitions){
         cellFormatters[col.field] = col.cellFormatter;    
         cellStyles[col.field] = col.cellStyle;   
-        classNames[col.field] = col.className;            
+        classNames[col.field] = col.customClassName;            
     }
 }
  
@@ -15,8 +15,6 @@ const DataGridBody = (props: any) => {
     const  { gridRowData, gridOptions } = props,
             { setRowStyle, columnDefinitions, rowHeight,
             headerHeight, gridHeight, footerHeight } = gridOptions;
-
-            console.log('Body');
 
     populateFields(columnDefinitions);
 
