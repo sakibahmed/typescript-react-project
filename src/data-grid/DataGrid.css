@@ -31,7 +31,7 @@
 .data-grid-header-cell{
     display: flex;
     position: relative;
-    justify-content: start;
+    justify-content: flex-start;
     /* padding: 20px; */
     border-right: 1px solid #ddd;
 } 
