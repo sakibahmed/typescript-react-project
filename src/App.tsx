@@ -58,6 +58,13 @@ const columnDefinitions = [
         
         return result * factor;
       });
+    },
+    cellStyle: () => {
+      return {
+        flexBasis: '30%',
+        flexShrink: 0,
+        flexGrow: 0
+      }
     }
   },
   {
@@ -68,24 +75,25 @@ const columnDefinitions = [
     cellFormatter: (value: any) => {        
      return '$'+ Math.abs(value);
     },
-    cellStyle: (value: any) => {        
+    cellStyle: (value: any) => {    
+      let style: any = {
+        flexBasis: '25%',
+        flexShrink: 0,
+        flexGrow: 0
+      };    
       if(value > 0){
-        return {
-          color: 'darkblue'
-        };
+        style.color = 'darkblue';
       }
       if(value < 0){
-        return {
-          color: 'red'
-        };
+        style.color = 'red';
       }
-      return null;
+      return style;
     }
   },
   {
     columnName: 'Ticker',
     field: 'ticker',
-    sortable: true
+    sortable: true,  
   },    
 ];
 
@@ -97,6 +105,7 @@ const gridOptions = {
   headerHeight: 40,
   footerHeight: 40,
   gridHeight: 400,
+  gridWidth: 700,
   setRowStyle: (data: any) => {      
     if(data.assetClass === 'Equities'){
       return {backgroundColor: 'deepskyblue'};

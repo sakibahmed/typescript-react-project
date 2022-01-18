@@ -6,14 +6,14 @@ import './DataGrid.css';
 
 const DataGrid = (props: any) => {   
     const [rows, setRows] = useState(props.rowData),       
-        { gridHeight,footerHeight } = props.gridOptions; 
+        { gridHeight,footerHeight, gridWidth } = props.gridOptions; 
 
     const sortHandler = useCallback( (data: any) => {
         setRows(data)
     }, []);
  
     return (        
-        <div className="data-grid-container"  style={{height: gridHeight}}>
+        <div className="data-grid-container"  style={{height: gridHeight, width: gridWidth }}>
             <DataGridHeader {...props} gridRowData={rows} sortHandler={sortHandler} />
             <DataGridBody {...props}  gridRowData={rows} />
             <DataGridFooter numberOfRows={rows.length} footerHeight={footerHeight}/>

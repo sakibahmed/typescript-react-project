@@ -1,10 +1,8 @@
-import { useCallback, useEffect } from "react";
-
 const sortColumnMap: any = {},
       classNames: any = {};
 
 const populateClassNames = (columnDefinitions: any) => {
-    for(let col of columnDefinitions){         
+    for(let col of columnDefinitions){    
         classNames[col.field] = col.customClassName;            
     }
 }
@@ -12,6 +10,13 @@ const populateClassNames = (columnDefinitions: any) => {
 const getCustomClassName = (field: any) => {        
     return classNames[field] ? classNames[field]: '';
 }     
+
+const getCellStyle = (getStyle:any) => {
+    if(getStyle){
+        return getStyle();
+    }
+    return {};
+}
 
 const DataGridHeader = (props : any) => {
     const { gridRowData, gridOptions, sortHandler } = props,
@@ -77,7 +82,7 @@ const DataGridHeader = (props : any) => {
                 columnDefinitions.map((col: any, index: number) => {                        
                     return (
                         <div className={`data-grid-header-cell data-grid-cell ${getCustomClassName(col.field)}`}  key={index}
-                            style={{height: headerHeight}} 
+                            style={{height: headerHeight, ...getCellStyle(col.cellStyle)}} 
                             onClick={ (event: any) =>  sortFn(event,col)}>
 
                            <div className="data-grid-header-cell-label">

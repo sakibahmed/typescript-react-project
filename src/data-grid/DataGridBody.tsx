@@ -1,5 +1,4 @@
-
- const cellFormatters: any = {},
+const cellFormatters: any = {},
         cellStyles: any = {},
         classNames: any = {};
 
@@ -10,6 +9,11 @@ const populateFields = (columnDefinitions: any) => {
         classNames[col.field] = col.customClassName;            
     }
 }
+
+
+const getCellStyle = (field: any, value: any) => {        
+    return cellStyles[field] ? cellStyles[field](value) : null;
+}
  
 const DataGridBody = (props: any) => {    
     const  { gridRowData, gridOptions } = props,
@@ -17,10 +21,6 @@ const DataGridBody = (props: any) => {
             headerHeight, gridHeight, footerHeight } = gridOptions;
 
     populateFields(columnDefinitions);
-
-    const getCellStyle = (field: any, value: any) => {        
-        return cellStyles[field] ? cellStyles[field](value) : null;
-    }
 
     const getCellFormatter = (field: any, value: any) => {        
         return cellFormatters[field] ? cellFormatters[field](value) : value;
