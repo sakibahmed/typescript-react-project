@@ -1,11 +1,15 @@
-export default function DataGridFooter(props : any){
-    const { gridRowData } = props,
-         {footerHeight} = props.gridOptions;
+import React from "react";
+
+ const  DataGridFooter = (props : any) => {
+    const { numberOfRows, footerHeight } = props;
+
     return (
         <div className="data-grid-footer" style={{height: footerHeight}}>
             <div>
-                Total Rows : {gridRowData.length} 
+                Total Rows : {numberOfRows} 
             </div>            
         </div>
     );
 }
+
+export default React.memo(DataGridFooter);

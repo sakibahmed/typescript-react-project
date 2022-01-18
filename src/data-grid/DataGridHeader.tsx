@@ -1,17 +1,21 @@
-const sortColumnMap: any = {};
+const sortColumnMap: any = {},
+    classNames: any = {};
 
-export default function DataGridHeader(props : any){
-    const { gridRowData, gridOptions, sortRows } = props,
-        { columnDefinitions, headerHeight, enableSorting } = gridOptions;
-
-    const classNames: any = {};
+const populateClassNames = (columnDefinitions: any) => {
     for(let col of columnDefinitions){         
         classNames[col.field] = col.className;            
     }
+}
 
-    const getClassName = (field: any) => {        
-        return classNames[field] ? classNames[field]: '';
-    }        
+const getClassName = (field: any) => {        
+    return classNames[field] ? classNames[field]: '';
+}     
+
+const DataGridHeader = (props : any) => {
+    const { gridRowData, gridOptions, sortHandler } = props,
+        { columnDefinitions, headerHeight, enableSorting } = gridOptions;
+
+    populateClassNames(columnDefinitions);       
     
     const sortFn = (event: any, col: any) => {
         const {field, customSort} = col;
@@ -48,7 +52,7 @@ export default function DataGridHeader(props : any){
             });
         }       
         
-        sortRows([...sortedRows]);
+        sortHandler([...sortedRows]);
     };
 
     const getSortOrder = (field: any) => {
@@ -91,3 +95,5 @@ export default function DataGridHeader(props : any){
         </div>
     );
 }
+
+export default DataGridHeader;

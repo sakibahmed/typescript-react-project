@@ -1,17 +1,22 @@
-export default function DataGridBody(props: any){    
-    const  { gridRowData, gridOptions } = props,
-            { setRowStyle, columnDefinitions, rowHeight,
-            headerHeight, gridHeight, footerHeight } = gridOptions;
 
-    const cellFormatters: any = {};
-    const cellStyles: any = {};
-    const classNames: any = {};
+ const cellFormatters: any = {},
+        cellStyles: any = {},
+        classNames: any = {};
 
+const populateFields = (columnDefinitions: any) => {
     for(let col of columnDefinitions){
         cellFormatters[col.field] = col.cellFormatter;    
         cellStyles[col.field] = col.cellStyle;   
         classNames[col.field] = col.className;            
     }
+}
+ 
+const DataGridBody = (props: any) => {    
+    const  { gridRowData, gridOptions } = props,
+            { setRowStyle, columnDefinitions, rowHeight,
+            headerHeight, gridHeight, footerHeight } = gridOptions;
+
+    populateFields(columnDefinitions);
 
     const getCellStyle = (field: any, value: any) => {        
         return cellStyles[field] ? cellStyles[field](value) : null;
@@ -52,3 +57,5 @@ export default function DataGridBody(props: any){
     );
 }
 
+
+export default DataGridBody;
